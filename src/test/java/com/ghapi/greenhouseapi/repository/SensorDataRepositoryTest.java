@@ -2,7 +2,6 @@ package com.ghapi.greenhouseapi.repository;
 
 import com.ghapi.greenhouseapi.entity.Department;
 import com.ghapi.greenhouseapi.entity.SensorData;
-import com.ghapi.greenhouseapi.repository.SensorDataRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -34,7 +33,11 @@ class SensorDataRepositoryTest {
 
     @Test
     public void displaySensorData() {
-        List<SensorData> sensorData = sensorDataRepository.findAll();
+        List<SensorData> sensorData = sensorDataRepository.findAllTest();
         System.out.println("Sensor Data = " + sensorData);
+    }
+
+    public void testDepartment() {
+
     }
 }
