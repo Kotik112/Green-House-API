@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -14,13 +15,14 @@ import javax.persistence.*;
 @Builder
 public class Department {
     @Id
-    @GeneratedValue
-    private Integer departmentId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long departmentId;
     private String department;
 
-    @OneToOne(
-            mappedBy = "department"
+    @OneToMany(
+            mappedBy = "department",
+            fetch = FetchType.LAZY
     )
-    private SensorData sensorData;
+    private List<SensorData> sensorData;
 
 }

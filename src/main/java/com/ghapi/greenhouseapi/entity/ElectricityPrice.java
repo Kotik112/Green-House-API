@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.LocalDateTime;
 
@@ -17,7 +18,8 @@ import java.time.LocalDateTime;
 @Builder
 public class ElectricityPrice {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long priceId;
     private LocalDateTime timestamp;
     private Float price;
 
