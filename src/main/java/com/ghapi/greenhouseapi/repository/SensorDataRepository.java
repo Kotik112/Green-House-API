@@ -35,4 +35,12 @@ public interface SensorDataRepository extends JpaRepository<SensorData, Long> {
             nativeQuery = true
     )
     List<AverageHumidityDTO> averageHumidity(Long departmentId);
+
+    /* this function gives you average humidity and temperature of each department on each day .. rounding of the value till 3 decimal places
+  for getting values according to each department and day  we have group by the department id and timestamp */
+    @Query(value = "select round((dc.humidity),3) as humidity,dc.department_id,dc.timestamp from db_uppg.sensor_data dc group by department_id,dc.timestamp",nativeQuery = true)
+    List<AverageHumidityDTO> findHumidity();
+
+    @Query(value = "select round((dc.temperature),3) as temperature ,dc.department_id,dc.timestamp from db_uppg.sensor_data dc group by department_id,dc.timestamp",nativeQuery = true)
+    List<Object[]> findTemperature();
 }

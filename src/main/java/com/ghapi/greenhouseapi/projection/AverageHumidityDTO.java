@@ -13,6 +13,7 @@ public class AverageHumidityDTO {
     Float humidity;
     LocalDateTime timestamp;
 
+
     public Float getHumidity() {
         return humidity;
     }

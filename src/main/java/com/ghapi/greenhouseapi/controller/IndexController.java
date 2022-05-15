@@ -7,16 +7,22 @@ package com.ghapi.greenhouseapi.controller;
 
 import com.ghapi.greenhouseapi.entity.ElectricityPrice;
 import com.ghapi.greenhouseapi.entity.SensorData;
+import com.ghapi.greenhouseapi.projection.AverageHumidityDTO;
+import com.ghapi.greenhouseapi.projection.AverageTemperatureDTO;
 import com.ghapi.greenhouseapi.repository.ElectricityPriceRepository;
 import com.ghapi.greenhouseapi.repository.SensorDataRepository;
+import com.jayway.jsonpath.internal.function.numeric.Average;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class IndexController {
@@ -75,7 +81,7 @@ public class IndexController {
     }
 
     @PostMapping("/inputPrice")
-    public String inputPrice(@RequestParam Float price, Model model) {
+    public String inputPrice(@RequestParam Float price) {
         ElectricityPrice ep = new ElectricityPrice();
         ep.setPrice(price);
         ep.setTimestamp(LocalDateTime.now());
@@ -83,5 +89,23 @@ public class IndexController {
         return "allSensorData";
     }
 
-    //@GetMapping(/)
+
+  @GetMapping("/averageHumidity")
+  public String avgHumidity(Model model) {
+
+    List<AverageHumidityDTO> list = sensorDataRepository.findHumidity();
+    model.addAttribute("allHumidity", list);
+    return "averageHumidity";
+  }
+
+
+  @GetMapping("/averageTemperature")
+  public String avgTemperature(Model model) {
+
+    List<Object[]> list = sensorDataRepository.findTemperature();
+    model.addAttribute("allTemperature", list);
+    return "averageTemperature";
+  }
+
+
 }
