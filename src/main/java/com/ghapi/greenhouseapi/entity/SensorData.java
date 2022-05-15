@@ -28,9 +28,7 @@ public class SensorData {
     private Long sensorDataId;
 
     @Column(
-            name = "timestamp",
-            insertable = false,
-            updatable = false
+            name = "timestamp"
     )
     private LocalDateTime timestamp;
 

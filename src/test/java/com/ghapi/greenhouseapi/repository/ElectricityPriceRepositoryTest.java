@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -16,8 +17,18 @@ class ElectricityPriceRepositoryTest {
     private ElectricityPriceRepository priceRepository;
 
     @Test
+    public void saveElectricityPrice() {
+        ElectricityPrice electricityPrice = ElectricityPrice.builder()
+                .price((float) 35.33)
+                .timestamp(LocalDateTime.now())
+                .build();
+        priceRepository.save(electricityPrice);
+    }
+
+
+    @Test
     public void printLatestPrices() {
-        ElectricityPrice price = priceRepository.findLatestPrice();
+        ElectricityPrice price = priceRepository.findLastPrice();
         System.out.println("Price = "+ price);
     }
 

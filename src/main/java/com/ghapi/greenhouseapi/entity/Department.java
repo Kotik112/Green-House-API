@@ -17,6 +17,10 @@ public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long departmentId;
+    @Column(
+            name = "department",
+            unique = true
+    )
     private String department;
 
     @OneToMany(

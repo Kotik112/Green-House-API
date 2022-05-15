@@ -2,6 +2,8 @@ package com.ghapi.greenhouseapi.repository;
 
 import com.ghapi.greenhouseapi.entity.Department;
 import com.ghapi.greenhouseapi.entity.SensorData;
+import com.ghapi.greenhouseapi.projection.AverageHumidityDTO;
+import com.ghapi.greenhouseapi.projection.AverageTemperatureDTO;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,8 +25,8 @@ class SensorDataRepositoryTest {
                 .build();
         SensorData sensorData = SensorData.builder()
                 .timestamp(LocalDateTime.now())
-                .temperature((float) 23.14)
-                .humidity((float) 44.03)
+                .temperature((float) 27.14)
+                .humidity((float) 34.03)
                 .department(department)
                 .build();
         sensorDataRepository.save(sensorData);
@@ -33,11 +35,25 @@ class SensorDataRepositoryTest {
 
     @Test
     public void displaySensorData() {
-        List<SensorData> sensorData = sensorDataRepository.findAllTest();
+        List<SensorData> sensorData = sensorDataRepository.findAll();
         System.out.println("Sensor Data = " + sensorData);
     }
 
-    public void testDepartment() {
+    @Test
+    public void printLastSensorData() {
+        SensorData sensorData = sensorDataRepository.findLastSensorData();
+        System.out.println("Sensor Data = " + sensorData);
+    }
 
+    @Test
+    public void printAverageTemp() {
+        List<AverageTemperatureDTO> averageTemperatureList = sensorDataRepository.averageTemperature(1L);
+        System.out.println("Sensor Data 1 = " + averageTemperatureList);
+    }
+
+    @Test
+    public void printAverageHumidity() {
+        List<AverageHumidityDTO>  averageHumidityList = sensorDataRepository.averageHumidity(1L);
+        System.out.println("Sensor Data 1 = " + averageHumidityList);
     }
 }
