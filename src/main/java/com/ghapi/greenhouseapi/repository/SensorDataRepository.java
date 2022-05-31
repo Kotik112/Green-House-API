@@ -1,8 +1,8 @@
 package com.ghapi.greenhouseapi.repository;
 
 import com.ghapi.greenhouseapi.entity.SensorData;
-import com.ghapi.greenhouseapi.projection.AverageHumidityDTO;
-import com.ghapi.greenhouseapi.projection.AverageTemperatureDTO;
+import com.ghapi.greenhouseapi.model.AverageHumidityDTO;
+import com.ghapi.greenhouseapi.model.AverageTemperatureDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

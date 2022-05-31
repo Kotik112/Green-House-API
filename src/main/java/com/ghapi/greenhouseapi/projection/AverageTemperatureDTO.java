@@ -1,4 +1,4 @@
-package com.ghapi.greenhouseapi.projection;
+package com.ghapi.greenhouseapi.model;
 
 import lombok.AllArgsConstructor;
 import lombok.ToString;

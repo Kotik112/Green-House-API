@@ -2,8 +2,8 @@ package com.ghapi.greenhouseapi.repository;
 
 import com.ghapi.greenhouseapi.entity.Department;
 import com.ghapi.greenhouseapi.entity.SensorData;
-import com.ghapi.greenhouseapi.projection.AverageHumidityDTO;
-import com.ghapi.greenhouseapi.projection.AverageTemperatureDTO;
+import com.ghapi.greenhouseapi.model.AverageHumidityDTO;
+import com.ghapi.greenhouseapi.model.AverageTemperatureDTO;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -7,8 +7,8 @@ package com.ghapi.greenhouseapi.controller;
 
 import com.ghapi.greenhouseapi.entity.ElectricityPrice;
 import com.ghapi.greenhouseapi.entity.SensorData;
-import com.ghapi.greenhouseapi.projection.AverageHumidityDTO;
-import com.ghapi.greenhouseapi.projection.AverageTemperatureDTO;
+import com.ghapi.greenhouseapi.model.AverageHumidityDTO;
+import com.ghapi.greenhouseapi.model.AverageTemperatureDTO;
 import com.ghapi.greenhouseapi.repository.ElectricityPriceRepository;
 import com.ghapi.greenhouseapi.repository.SensorDataRepository;
 import com.jayway.jsonpath.internal.function.numeric.Average;
